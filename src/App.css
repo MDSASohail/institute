@@ -1,38 +1,146 @@
-.App {
-  text-align: center;
+.searchMainDiv
+{
+   background-color: red;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.eachStudent
+{
+   transition: background-color 0.3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+.listStudentDiv
+{
+   flex: 0.3;
+   transition: transform 0.3s;
+   position: relative;
+  
+}
+
+.specificUserDetail
+{
+   flex: 0.7;
+   background-color: green;
+}
+
+.AllStudentsMainDiv
+{
+   height: calc(100vh - 40px);
+}
+
+.showHideBTN
+{
+    right: -70px;
+    border: 2px solid;
+    padding: 5px 15px;
+    font-weight: 900;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+
+/* .listStudentDiv::after
+{
+   content: "Show";
+   position: absolute;
+   right: -60px;
+   top: 0px;
+} */
+
+.trasitionHide
+{
+   transform: translateX(-110%);
+   
+   
+}
+.trasitionShow
+{
+  transform: translateX(0%);
+  
+}
+
+.listOfAllUsers
+{
+    height: 85%;
+    /* flex: 0.3; */
+}
+
+.searchMainDiv
+{
+    height: 15%;
+}
+
+
+.listOfAllUsers::-webkit-scrollbar
+{
+   /* background-color: red; */
+   width: 12px;
+}
+.listOfAllUsers::-webkit-scrollbar-thumb
+{
+    /* width: 10px; */
+    background-color: blue;
+    border-radius: 10px;
+}
+
+.listOfAllUsers::-webkit-scrollbar-track
+{
+    background-color: black;
+}
+
+.eachStudent:hover
+  {
+      background-color: bisque;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .showHideBTN
+  {
+       display: none;
   }
-  to {
-    transform: rotate(360deg);
+
+
+@media screen and (max-width:700px) {
+
+    .AllStudentsMainDiv
+    {
+        display: block;
+
+    }
+  .showHideBTN
+  {
+       display: block;
   }
+  .searchMainDiv
+  {
+   background-color: blue;
+   flex-direction: column;
+   height: 15%;
+   align-items: center;
+    justify-content: space-around;
+  }
+
+  .specificUserDetail
+  {
+     
+     background-color: blue;
+  }
+
+  .listStudentDiv
+  {
+      position: absolute;
+     
+  }
+  
+}
+
+@media screen and (min-width:701px) {
+  
+  .trasitionHide
+  {
+    transform: translateX(0%);
+    
+  }
+
+  
 }
