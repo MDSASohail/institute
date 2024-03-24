@@ -124,6 +124,7 @@
   {
      
      background-color: blue;
+     height: calc(100vh - 40px);
   }
 
   .listStudentDiv
