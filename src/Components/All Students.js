@@ -11,7 +11,7 @@ function AllStudents() {
     const [value,setValue]=useState("");
     const [filterUser,setFilterUser]=useState([]);
     const [singleUser,setSingleUser]=useState("");
-   
+     const [catagory,setCategory]=useState("fullName")
   
     const fetchData=async ()=>{
       try {
@@ -34,16 +34,22 @@ function AllStudents() {
     },[])
     function hancleChange(e)
     {
-        if(e.target.value=="")
-          {
-            setFilterUser(stu);
-            return;
-          }
-          const inputValue=e.target.value.toLowerCase();
-          const filterUser=stu.filter((s)=>s.fullName.toLowerCase().includes(inputValue));
-          setFilterUser(filterUser);
+        
+       
+       if(e.target.value=="")
+       {
+         setFilterUser(stu);
+         return;
+       }
+       const inputValue=e.target.value.toLowerCase();
+       
+       if(catagory=="fullName")
+       {const filterUser=stu.filter((s)=>s.fullName.toLowerCase().includes(inputValue));setFilterUser(filterUser);}
+      else
+      {const filterUser=stu.filter((s)=>s.registrationNo.toLowerCase().includes(inputValue));setFilterUser(filterUser);}
+       
           
-        }
+   }
     return (
     <div className='border-2 AllStudentsMainDiv relative flex  border-emerald-600'>
         {/* For List of users */}
@@ -52,9 +58,9 @@ function AllStudents() {
             <div className='absolute showHideBTN top-0  '  onClick={()=>{setShow(!show)}}>{show?">":"<"}</div>
                <div className="searchMainDiv flex  ml-3 border-2   border-pink-300 items-center">
                   <p className='mr-4'>Search By 
-                      <select className='border-2 ml-2' name="" id="">
-                         <option  value="id" >Id</option>
-                         <option  value="name">Name</option>
+                      <select className='border-2 ml-2' name="" id="" onChange={(e)=>{setCategory(e.target.value)}}>
+                         <option  value="fullName" >Name</option>
+                         <option  value="userId">UserId</option>
                       </select>
                   </p>
                   <input type="text"  onChange={(e)=>{hancleChange(e)}}  placeholder='Search here' />
@@ -66,7 +72,7 @@ function AllStudents() {
                      return(
                         <>
                           <Link to={`/${student._id}`}>
-                            <li onClick={()=>{setSingleUser(student);setShow(!show);}} className={singleUser._id===student._id?'border-2 mt-1 bg-red-400 eachStudent cursor-pointer list-none  p-1':'border-2 mt-1 eachStudent cursor-pointer list-none  p-1'}>{student.fullName} {student.userId}</li>
+                            <li onClick={()=>{setSingleUser(student);setShow(!show);}} className={singleUser._id===student._id?'border-2 mt-1 bg-red-400 eachStudent cursor-pointer list-none  p-1':'border-2 mt-1 eachStudent cursor-pointer list-none  p-1'}>{student.fullName} {student.registrationNo}</li>
                           </Link>
                         </>
                      )
@@ -76,11 +82,13 @@ function AllStudents() {
          <div className="specificUserDetail border-2 border-green-800">
              {/* {singleUser ==""?"Select a user to see detail":<div>Selected user is {singleUser}</div>} */}
              <Routes>
-            v   <Route path='/' element={<div>Select a user </div>}/>
-                <Route path='/addUser' element={<AddUser fetchData={fetchData}/>}/>
-                <Route path='/:id' element={<SingleStudentDetail id={singleUser._id} fetchData={fetchData}/>}/>
+               <Route path='/' element={<div>Select a user </div>}/>
+                <Route path='/addUser/' element={<AddUser fetchData={fetchData} which={true}/>}/>
+                <Route path='/:id/*' element={<SingleStudentDetail id={singleUser._id} fetchData={fetchData} registrationNo={singleUser.registrationNo} fullName={singleUser.fullName}/>}/>
                 
              </Routes>
+
+             
              
          </div>
          

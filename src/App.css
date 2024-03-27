@@ -71,6 +71,22 @@
 }
 
 
+.singleStudentDetail
+{
+     background-color: rgba(0 ,0,0, 0.7);
+     width: calc( 100vw - 33%);
+     height: calc(100vh - 40px);
+}
+
+.fullView
+{
+   width: calc( 100vw - 33%);
+     height: calc(100vh - 40px);
+     background-color: black;
+     color: white;
+}
+
+
 .listOfAllUsers::-webkit-scrollbar
 {
    /* background-color: red; */
@@ -131,6 +147,12 @@
   {
       position: absolute;
      
+  }
+
+
+  .singleStudentDetail
+  {
+            width: 100vw;
   }
   
 }
