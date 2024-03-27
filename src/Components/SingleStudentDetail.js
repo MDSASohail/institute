@@ -42,26 +42,26 @@ function SingleStudentDetail({id,fetchData,registrationNo,fullName}) {
          }
     }
   return (
-    <div>
-         {yes && <div className=' singleStudentDetail absolute  flex justify-center items-center   '>
-             <div className='w-80 text-white border-2 flex-col h-80 flex justify-center items-center'>
+    <div className=''>
+         {yes && <div className=' yesNo absolute  flex justify-center items-center   '>
+             <div className='w-80 text-white rounded-xl flex-col h-80 flex justify-center items-center'>
              <p>Are you sure?</p>
               <div>
-              <button className='border-2 p-2 m-2' onClick={handleclick}>Yes</button>
-                <button className='border-2 p-2 m-2' onClick={()=>{setYes(false);console.log("False ",yes)}}>No</button>
+              <button className='btn p-2 m-2' onClick={handleclick}>Yes</button>
+                <button className='btn p-2 m-2' onClick={()=>{setYes(false);console.log("False ",yes)}}>No</button>
               </div>
              </div>
          </div>}
-         <div className='border-2 flex justify-end mr-4'>
-            <button  className='border-2 p-2 m-2' onClick={()=>{setYes(true)}}>Delete</button>
+         <div className='border-2 flex justify-end mr-4 specipicNavbar'>
+            <button  className='btn p-2 m-2 ' onClick={()=>{setYes(true)}}>Delete</button>
             <Link to={`update`} >
-            <button className='border-2 p-2 m-2'>Updata</button>
+            <button className='btn p-2 m-2'>Updata</button>
             </Link>
             <Link to={`marksheet`}>
-            <button className='border-2 p-2 m-2'>Markbuttonet</button>
+            <button className='btn p-2 m-2'>Markbuttonet</button>
             </Link>
              <Link to={`certificate`}>
-             <button className='border-2 p-2 m-2'>Certificate</button>
+             <button className='btn p-2 m-2'>Certificate</button>
              </Link>
              
          </div>
@@ -73,7 +73,7 @@ function SingleStudentDetail({id,fetchData,registrationNo,fullName}) {
                
             </Routes>
 
-            <div>Sohail Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic porro sequi tempore aperiam! Modi optio corporis sapiente veritatis voluptates enim iusto hic nulla deserunt nam ea odit libero, pariatur iure.</div>
+           
          </div>
 
     </div>

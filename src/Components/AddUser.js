@@ -87,7 +87,7 @@ function AddUser({fetchData,data,which}) {
              }
     }
   return (
-    <div>
+    <div className='addUserBg'>
         {success && <div className='absolute  flex justify-center items-center fullView'>
              <div>{data?"Updated":"User Added"} Successfully</div>
         </div>}

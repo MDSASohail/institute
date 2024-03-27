@@ -1,31 +1,66 @@
+.navbar
+{
+   background-color: #5AB9EA;
+   font-weight: 700;
+   /* font-size: 16px; */
+   color: white;
+}
+
+.btn{
+   transition: color 0.3s;
+   /* background-color: red; */
+   color: white;
+}
+
+.btn:hover
+{
+    color: black;
+}
+
 .searchMainDiv
 {
-   background-color: red;
+   /* background-color: red; */
+   width: calc(100% - 10px);
+}
+
+
+.bg
+{
+    background-color: #C1C8B4;
 }
 
 .eachStudent
 {
    transition: background-color 0.3s;
+   
+}
+
+.specipicNavbar
+{
+    background-color: #84CEEB;
 }
 
 
 .listStudentDiv
 {
    flex: 0.3;
+   height: calc(100vh - 40px);
    transition: transform 0.3s;
-   position: relative;
+   position: sticky;
+   top: 40px;
+   background-color: #5680E9;
   
 }
 
 .specificUserDetail
 {
    flex: 0.7;
-   background-color: green;
+   background-color: #C1C8B4;
 }
 
 .AllStudentsMainDiv
 {
-   height: calc(100vh - 40px);
+   /* height: calc(100vh - 40px); */
 }
 
 .showHideBTN
@@ -71,11 +106,16 @@
 }
 
 
-.singleStudentDetail
+.yesNo
 {
      background-color: rgba(0 ,0,0, 0.7);
      width: calc( 100vw - 33%);
      height: calc(100vh - 40px);
+}
+
+.yesNo div
+{
+    background-color: #C1C8B4;
 }
 
 .fullView
@@ -101,7 +141,8 @@
 
 .listOfAllUsers::-webkit-scrollbar-track
 {
-    background-color: black;
+    background-color: #C1C8B4;
+
 }
 
 .eachStudent:hover
@@ -136,16 +177,12 @@
     justify-content: space-around;
   }
 
-  .specificUserDetail
-  {
-     
-     background-color: blue;
-     height: calc(100vh - 40px);
-  }
+ 
 
   .listStudentDiv
   {
-      position: absolute;
+      position: fixed;
+      top: 40px;
      
   }
 

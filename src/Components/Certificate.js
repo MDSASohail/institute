@@ -6,7 +6,7 @@ function Certificate({id,registrationNo,fullName,userData}) {
   console.log("Id for certificate is ",id)
  
   return (
-    <div>
+    <div className="specificBg">
           <div>
              <p>Gujrat Institute of Fire and Industrial Safety Engineer</p>
 

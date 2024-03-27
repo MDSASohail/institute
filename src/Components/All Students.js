@@ -54,32 +54,37 @@ function AllStudents() {
     <div className='border-2 AllStudentsMainDiv relative flex  border-emerald-600'>
         {/* For List of users */}
          
-         <div className={show?'trasitionHide border-2 h-full   listStudentDiv bg-red-900 border-black ':" bg-red-900 h-full trassitionShow border-2  listStudentDiv border-black "}>
+         <div className={show?'trasitionHide border-2     listStudentDiv  border-green-800 ':"    trassitionShow border-2  listStudentDiv  border-black "}>
             <div className='absolute showHideBTN top-0  '  onClick={()=>{setShow(!show)}}>{show?">":"<"}</div>
-               <div className="searchMainDiv flex  ml-3 border-2   border-pink-300 items-center">
-                  <p className='mr-4'>Search By 
-                      <select className='border-2 ml-2' name="" id="" onChange={(e)=>{setCategory(e.target.value)}}>
+               <div className="searchMainDiv   p-2 box-border      items-center">
+                  <strong className='text-center inline-block w-full mb-2'>Search By </strong>
+                      <div className=' flex justify-around'>
+                      <select className='outline-none ml-2 bg-transparent' name="" id="" onChange={(e)=>{setCategory(e.target.value)}}>
                          <option  value="fullName" >Name</option>
-                         <option  value="userId">UserId</option>
+                         <option  value="userId">Registration No</option>
+                         
                       </select>
-                  </p>
-                  <input type="text"  onChange={(e)=>{hancleChange(e)}}  placeholder='Search here' />
+
+                      <input type="text" className='bg-transparent outline-none'  onChange={(e)=>{hancleChange(e)}}  placeholder='Search here' />
+                      </div>
+                  
+                  
                </div>
 
-               <div className="listOfAllUsers overflow-x-hidden border-2 h-full  border-red-900  overflow-scroll ml-3">
+               <div className="listOfAllUsers overflow-x-hidden  h-full    overflow-scroll ml-3">
                   {filterUser.map((student,index)=>{
                      
                      return(
                         <>
                           <Link to={`/${student._id}`}>
-                            <li onClick={()=>{setSingleUser(student);setShow(!show);}} className={singleUser._id===student._id?'border-2 mt-1 bg-red-400 eachStudent cursor-pointer list-none  p-1':'border-2 mt-1 eachStudent cursor-pointer list-none  p-1'}>{student.fullName} {student.registrationNo}</li>
+                            <li onClick={()=>{setSingleUser(student);setShow(!show);}} className={singleUser._id===student._id?'rounded-xl p-2  mr-2 my-2 bg-red-800 eachStudent cursor-pointer list-none  ':'p-2 rounded-xl mt-1 eachStudent  bg cursor-pointer list-none  mr-2 my-2'}>{student.fullName} {student.registrationNo}</li>
                           </Link>
                         </>
                      )
                   })}
                </div>
          </div>
-         <div className="specificUserDetail border-2 border-green-800">
+         <div className="specificUserDetail border-2 ">
              {/* {singleUser ==""?"Select a user to see detail":<div>Selected user is {singleUser}</div>} */}
              <Routes>
                <Route path='/' element={<div>Select a user </div>}/>

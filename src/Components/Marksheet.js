@@ -3,7 +3,7 @@
 function Marksheet({userData}) {
   console.log(userData)
   return (
-    <div>{userData.rollNo}
+    <div className="specificBg">{userData.rollNo}
        <div><strong>Father Name is </strong> {userData.fatherName}</div>
     </div>
   )
