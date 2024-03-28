@@ -6,18 +6,18 @@ import Marksheet from './Marksheet';
 import Certificate from './Certificate';
 import Update from './Update'
 function SingleStudentDetail({id,fetchData,registrationNo,fullName}) {
-    console.log("Id is ",id);
+    console.log("In single user Id is ",id);
     const[yes,setYes]=useState(false)
     const navigate=useNavigate();
 
     const [userData,setUserData]=useState(null);
-
+   
   useEffect(()=>{
                   const getData=async()=>{
                     try {
                          const data=await axios.get(`http://localhost:8000/userDetail/${id}`);
                          const d=data.data;
-                         console.log(data.data);
+                         console.log("user data got from server is ",data.data);
                          setUserData(d);
                     } catch (error) {
                              console.log("Error in fetching detail of user ",error.message);
@@ -52,7 +52,7 @@ function SingleStudentDetail({id,fetchData,registrationNo,fullName}) {
               </div>
              </div>
          </div>}
-         <div className='border-2 flex justify-end mr-4 specipicNavbar'>
+         <div className='h-14 - sticky top-12  flex justify-end  bg-red-800'>
             <button  className='btn p-2 m-2 ' onClick={()=>{setYes(true)}}>Delete</button>
             <Link to={`update`} >
             <button className='btn p-2 m-2'>Updata</button>
@@ -68,7 +68,7 @@ function SingleStudentDetail({id,fetchData,registrationNo,fullName}) {
          <div>
             <Routes>
                <Route path='certificate' element={<Certificate id={id} registrationNo={registrationNo} fullName={fullName} userData={userData}/>}/>
-               <Route path='marksheet' element={<Marksheet userData={userData}/>}/>
+               <Route path='marksheet' element={<Marksheet id={id} registrationNo={registrationNo} fullName={fullName} userData={userData}/>}/>
                <Route path='update' element={<Update  id={id} registrationNo={registrationNo} fullName={fullName} userData={userData}/>}/>
                
             </Routes>

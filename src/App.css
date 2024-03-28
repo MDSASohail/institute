@@ -35,10 +35,7 @@
    
 }
 
-.specipicNavbar
-{
-    background-color: #84CEEB;
-}
+
 
 
 .listStudentDiv
@@ -47,7 +44,7 @@
    height: calc(100vh - 40px);
    transition: transform 0.3s;
    position: sticky;
-   top: 40px;
+   top: 48px;
    background-color: #5680E9;
   
 }
@@ -58,15 +55,12 @@
    background-color: #C1C8B4;
 }
 
-.AllStudentsMainDiv
-{
-   /* height: calc(100vh - 40px); */
-}
+
 
 .showHideBTN
 {
-    right: -70px;
-    border: 2px solid;
+    right: -85px;
+    border: 2px solid white;
     padding: 5px 15px;
     font-weight: 900;
     border-radius: 10px;
@@ -74,13 +68,7 @@
     
 }
 
-/* .listStudentDiv::after
-{
-   content: "Show";
-   position: absolute;
-   right: -60px;
-   top: 0px;
-} */
+
 
 .trasitionHide
 {
@@ -155,7 +143,23 @@
   {
        display: none;
   }
+.borderStyle
+{
+      /* border-color: rgba(0, 0, 0, 0.2);
+      border-width: 1px; */
+      padding: 5px 10px;
+      border-radius: 10px;
+      width: 410px;
+      box-shadow: 1px 1px 5px black;
+}
 
+
+.gridStyle
+{
+     /* border: 4px solid  red; */
+     display: grid;
+     grid-template-columns: repeat(auto-fit,minmax(350px,1fr)) ;
+}
 
 @media screen and (max-width:700px) {
 
@@ -170,7 +174,7 @@
   }
   .searchMainDiv
   {
-   background-color: blue;
+   
    flex-direction: column;
    height: 15%;
    align-items: center;
@@ -182,7 +186,7 @@
   .listStudentDiv
   {
       position: fixed;
-      top: 40px;
+      top: 48px;
      
   }
 

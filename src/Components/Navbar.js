@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 function Navbar() {
   return (
-    <div className='border-2 h-12 navbar box-border  sticky  top-0 z-10  '>
+    <div className=' h-12 navbar box-border  sticky  top-0 z-10  '>
       <div className="flex  mr-8 justify-between  items-center">
         <p className=' w-1/3 text-center'>All Students</p>
         <div>

@@ -4,8 +4,8 @@ import AddUser from './AddUser'
 function Update({id,registrationNo,fullName,userData}) {
     const data={id:id,registrationNo:registrationNo,fullName:fullName,userData:userData};
   return (
-    <div className='specificBg'>
-       <div>Update the data</div>
+    <div className=''>
+       
         <AddUser data={data} which={false} />
     </div>
   )

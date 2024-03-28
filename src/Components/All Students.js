@@ -51,11 +51,11 @@ function AllStudents() {
           
    }
     return (
-    <div className='border-2 AllStudentsMainDiv relative flex  border-emerald-600'>
+    <div className=' AllStudentsMainDiv relative flex  '>
         {/* For List of users */}
          
-         <div className={show?'trasitionHide border-2     listStudentDiv  border-green-800 ':"    trassitionShow border-2  listStudentDiv  border-black "}>
-            <div className='absolute showHideBTN top-0  '  onClick={()=>{setShow(!show)}}>{show?">":"<"}</div>
+         <div className={show?'trasitionHide  z-20    listStudentDiv   ':"  z-20  trassitionShow   listStudentDiv   "}>
+            <div className='absolute showHideBTN eachStudent top-3  '  onClick={()=>{setShow(!show)}}>{show?">":"<"}</div>
                <div className="searchMainDiv   p-2 box-border      items-center">
                   <strong className='text-center inline-block w-full mb-2'>Search By </strong>
                       <div className=' flex justify-around'>
@@ -77,18 +77,18 @@ function AllStudents() {
                      return(
                         <>
                           <Link to={`/${student._id}`}>
-                            <li onClick={()=>{setSingleUser(student);setShow(!show);}} className={singleUser._id===student._id?'rounded-xl p-2  mr-2 my-2 bg-red-800 eachStudent cursor-pointer list-none  ':'p-2 rounded-xl mt-1 eachStudent  bg cursor-pointer list-none  mr-2 my-2'}>{student.fullName} {student.registrationNo}</li>
+                            <li onClick={()=>{setSingleUser(student);setShow(!show);}} className={singleUser._id===student._id?'rounded-xl p-2  mr-2 my-2 bg-red-800 eachStudent cursor-pointer list-none  ':'p-2 rounded-xl mt-1 eachStudent  bg cursor-pointer list-none  mr-2 my-2'}>{student.fullName}</li>
                           </Link>
                         </>
                      )
                   })}
                </div>
          </div>
-         <div className="specificUserDetail border-2 ">
+         <div className="specificUserDetail ">
              {/* {singleUser ==""?"Select a user to see detail":<div>Selected user is {singleUser}</div>} */}
              <Routes>
                <Route path='/' element={<div>Select a user </div>}/>
-                <Route path='/addUser/' element={<AddUser fetchData={fetchData} which={true}/>}/>
+                <Route path='/addUser/' element={<AddUser fetchData={fetchData} which={true} userId={singleUser._id}/>}/>
                 <Route path='/:id/*' element={<SingleStudentDetail id={singleUser._id} fetchData={fetchData} registrationNo={singleUser.registrationNo} fullName={singleUser.fullName}/>}/>
                 
              </Routes>
