@@ -19,15 +19,15 @@ function AllStudents() {
        const d=data.data;
        setStu(d);
        setFilterUser(d);
-       console.log("All student is ",stu);
-       console.log("Data is ",d)
+      //  console.log("All student is ",stu);
+      //  console.log("Data is ",d)
       } catch (error) {
          console.log("Error is ",error.message)
       }
   }
  
     useEffect(()=>{
-      console.log("All student is before ",stu);
+      // console.log("All student is before ",stu);
              
 
              fetchData();
@@ -76,7 +76,7 @@ function AllStudents() {
                      
                      return(
                         <>
-                          <Link to={`/${student._id}`}>
+                          <Link key={student._id} to={`/admin/${student._id}`}>
                             <li onClick={()=>{setSingleUser(student);setShow(!show);}} className={singleUser._id===student._id?'rounded-xl p-2  mr-2 my-2 bg-red-800 eachStudent cursor-pointer list-none  ':'p-2 rounded-xl mt-1 eachStudent  bg cursor-pointer list-none  mr-2 my-2'}>{student.fullName}</li>
                           </Link>
                         </>

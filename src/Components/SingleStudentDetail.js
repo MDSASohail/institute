@@ -6,7 +6,7 @@ import Marksheet from './Marksheet';
 import Certificate from './Certificate';
 import Update from './Update'
 function SingleStudentDetail({id,fetchData,registrationNo,fullName}) {
-    console.log("In single user Id is ",id);
+    // console.log("In single user Id is ",id);
     const[yes,setYes]=useState(false)
     const navigate=useNavigate();
 
@@ -17,7 +17,7 @@ function SingleStudentDetail({id,fetchData,registrationNo,fullName}) {
                     try {
                          const data=await axios.get(`http://localhost:8000/userDetail/${id}`);
                          const d=data.data;
-                         console.log("user data got from server is ",data.data);
+                        //  console.log("user data got from server is ",data.data);
                          setUserData(d);
                     } catch (error) {
                              console.log("Error in fetching detail of user ",error.message);

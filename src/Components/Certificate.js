@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 
 function Certificate({id,registrationNo,fullName,userData}) {
-  console.log("Id for certificate is ",id)
+//   console.log("Id for certificate is ",id)
   const d=new Date(userData?.issueDate)
   // console.log("Issue date is ",d)
   const year=d.getFullYear();
@@ -13,7 +13,9 @@ function Certificate({id,registrationNo,fullName,userData}) {
   const newDate=`${year}-${month}-${day}`
  
   return (
-    <div className="specificBg">
+    <div className="specificBgg">
+
+         <div className=" text-center text-xl py-4 font-bold">This is a valid certificate</div>
           <div className='gridStyle'>
                  <div className='  py-2 px-6 flex items-center justify-between'>
                      <strong>Full Name</strong>

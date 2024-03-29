@@ -138,6 +138,12 @@
       background-color: bisque;
   }
 
+  .specificBgg
+  {
+    background-color: #C1C8B4;
+    height: 100vh;
+  }
+
 
   .showHideBTN
   {
