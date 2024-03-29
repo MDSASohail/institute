@@ -9,6 +9,7 @@ import { useReducer,createContext,useEffect } from "react";
 import Reducer from "./ContextApi/Reducer";
 import UserCertifaca from './Components/UserCertificate'
 import LoginPage from "./Components/LoginPage";
+import Home from "./Components/Home";
 export const allData=createContext();
 function App() {
   const initialData={allStudents:"",singleSelectedStudent:"",fullDetail:""};
@@ -23,7 +24,7 @@ function App() {
       <allData.Provider value={{allStudents:value.allStudents,singleSelectedStudent:value.singleSelectedStudent,fullDetail:value.fullDetail,dispatch:dispatch}}>
        
          <Routes>
-          <Route path="/" element={<div>This is Home</div>}/>
+          <Route path="/" element={<Home/>}/>
           <Route path="/admin/*" element={adminUser?<AdminHomePage/>:<Navigate to={'/login'}/>}/>
           <Route path="/user/:id" element={<UserCertifaca/>}/>
           <Route path="/login" element={<LoginPage/>}/>
