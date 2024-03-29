@@ -1,19 +1,46 @@
 import axios from "axios";
-import { useEffect, useState,useContext } from "react";
-import { allData } from "../App";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-function Certificate() {
 
-    const {dispatch,singleSelectedStudent,fullDetail}=useContext(allData);
-//   console.log("Id for certificate is ",id)
+function UserCertificate() {
+
+   
+   
+   const [singleSelectedStudent,setSingleStudent]=useState(null);
+   const [fullDetail,setFullsetail]=useState(null);
   
-  // console.log("Issue date is ",day,month,year)
+  const id=useParams();
+    console.log(id)
   const d=new Date(fullDetail?.issueDate)
-  // console.log("Issue date is ",d)
+ 
   const year=d.getFullYear();
   const month=d.getMonth()+1;
   const day=d.getDate();
   const newDate=`${year}-${month}-${day}`
+
+  useState(()=>{
+      const fetchData=async()=>{
+            try {
+                   const user=await axios.get(`http://localhost:8000/user/${id.id}`)
+                   const d=user.data;
+                   
+                    // console.log("User account is ",d,d._id)
+                   const userDetail=await axios.get(`http://localhost:8000/userDetail/${d[0]._id}`);
+                    // console.log("User detail is ",userDetail.data);
+                    setFullsetail(userDetail.data)
+                    setSingleStudent(d[0]);
+            } catch (error) {
+                console.log("Error in fetching data in userCertificate")
+            }
+      }
+      fetchData();
+
+  },[id])
+
+//   useEffect(()=>{
+//      console.log("Change ",fullDetail,singleSelectedStudent)
+//   },[singleSelectedStudent,fullDetail])
   
   return (
     <div className="specificBgg">
@@ -22,7 +49,7 @@ function Certificate() {
           <div className='gridStyle'>
                  <div className='  py-2 px-6 flex items-center justify-between'>
                      <strong>Full Name</strong>
-                     <span>{singleSelectedStudent.fullName}</span>
+                     <span>{singleSelectedStudent?.fullName}</span>
                  </div>
                  <div className='  py-2 px-6 flex items-center justify-between'>
                      <strong>Father Name</strong>
@@ -30,7 +57,7 @@ function Certificate() {
                  </div>
                  <div className=' py-2 px-6 flex items-center justify-between'>
                      <strong>Registration No</strong>
-                     <span>{singleSelectedStudent.registrationNo}</span>
+                     <span>{singleSelectedStudent?.registrationNo}</span>
                  </div>
                  <div className=' py-2 px-6 flex items-center justify-between'>
                      <strong>Roll No</strong>
@@ -72,4 +99,4 @@ function Certificate() {
   )
 }
 
-export default Certificate;
+export default UserCertificate;

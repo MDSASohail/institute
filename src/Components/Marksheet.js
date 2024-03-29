@@ -1,9 +1,11 @@
+import { allData } from "../App";
+import { useContext } from "react";
+function Marksheet({}) {
 
-
-function Marksheet({id,registrationNo,fullName,userData}) {
-  console.log(userData)
-
-  const d=new Date(userData?.issueDate)
+    const {dispatch,singleSelectedStudent,fullDetail}=useContext(allData);
+//   console.log(singleSelectedStudent)
+    console.log("In Marks",singleSelectedStudent,fullDetail)
+  const d=new Date(fullDetail?.issueDate)
   // console.log("Issue date is ",d)
   const year=d.getFullYear();
   const month=d.getMonth()+1;
@@ -18,18 +20,18 @@ function Marksheet({id,registrationNo,fullName,userData}) {
              <div className='borderStyle   m-2'>
              <strong>Registration No</strong>
             
-             <span className='ml-4 text-xl  p-2 rounded-md'>{registrationNo}</span>
+             <span className='ml-4 text-xl  p-2 rounded-md'>{singleSelectedStudent.registrationNo}</span>
              </div>
              
             <div className='borderStyle  m-2'>
-            <span><strong>Full Name</strong></span>
-            <span className='ml-4 text-xl  p-2 rounded-md'>{fullName}</span>
+            <span><strong>fullDetail Name</strong></span>
+            <span className='ml-4 text-xl  p-2 rounded-md'>{singleSelectedStudent.fullName}</span>
             
             </div>
 
             <div className='borderStyle  m-2'>
                      <strong>Degree</strong>
-                     <span className='ml-4 text-xl  p-2 rounded-md'>{userData?.degree}</span>
+                     <span className='ml-4 text-xl  p-2 rounded-md'>{fullDetail?.degree}</span>
                  </div>
 
             
@@ -38,21 +40,21 @@ function Marksheet({id,registrationNo,fullName,userData}) {
 
 
            <div>
-            <div className=' mt-4 text-center text-xl p-2 bg-red-800 text-white'>Student Full Detail</div>
+            <div className=' mt-4 text-center text-xl p-2 bg-red-800 text-white'>Student fullDetail Detail</div>
 
             <div className=' '>
                  <div className='gridStyle'>
                  <div className='  py-2 px-6 flex items-center justify-between'>
                      <strong>Father Name</strong>
-                     <span>{userData?.fatherName}</span>
+                     <span>{fullDetail?.fatherName}</span>
                  </div>
                  <div className=' py-2 px-6 flex items-center justify-between'>
                      <strong>Mother Name</strong>
-                     <span>{userData?.motherName}</span>
+                     <span>{fullDetail?.motherName}</span>
                  </div>
                  <div className=' py-2 px-6 flex items-center justify-between'>
                      <strong>Roll No</strong>
-                     <span>{userData?.rollNo}</span>
+                     <span>{fullDetail?.rollNo}</span>
                  </div>
                  
 
@@ -61,12 +63,12 @@ function Marksheet({id,registrationNo,fullName,userData}) {
                         Grade
 
                      </strong>
-                     <span>{userData?.grade}</span>
+                     <span>{fullDetail?.grade}</span>
                  </div>
 
                  <div className=' py-2 px-6 flex items-center justify-between'>
                      <strong>Center</strong>
-                     <span>{userData?.center}</span>
+                     <span>{fullDetail?.center}</span>
                  </div>
                  <div className=' py-2 px-6 flex items-center justify-between'>
                     <strong>Issue Date</strong>
@@ -75,11 +77,11 @@ function Marksheet({id,registrationNo,fullName,userData}) {
                  
                  <div className=' py-2 px-6 flex items-center justify-between'>
                     <strong>Total Marks</strong>
-                    <span>{userData?.totalMarks}</span>
+                    <span>{fullDetail?.totalMarks}</span>
                  </div>
                  <div className=' py-2 px-6 flex items-center justify-between'>
                     <strong>Percentage</strong>
-                    <span>{userData?.percentage}</span>
+                    <span>{fullDetail?.percentage}</span>
                  </div>
                  </div>
                 
@@ -94,47 +96,47 @@ function Marksheet({id,registrationNo,fullName,userData}) {
                     <div className=' py-2 px-6 flex items-center justify-between'>
                         <strong> DFIS-101</strong>
                         <p >Fire and Safety engineering</p>
-                        <span>{userData?.subjects && userData.subjects.length>0?userData.subjects[0].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>0?fullDetail.subjects[0].value:"Marks not available"}</span>
                     </div>
                     <div className=' py-2 px-6 flex items-center justify-between'>
                         <strong> DFIS-102 </strong>
                         <p >Construction Safety</p>
-                        <span>{userData?.subjects && userData.subjects.length>1?userData.subjects[1].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>1?fullDetail.subjects[1].value:"Marks not available"}</span>
                     </div>
                     <div className=' py-2 px-6 flex items-center justify-between'>
                         <strong> DFIS-103 </strong>
                         <p >Industrial Safety Management</p>
-                        <span>{userData?.subjects && userData.subjects.length>2?userData.subjects[2].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>2?fullDetail.subjects[2].value:"Marks not available"}</span>
                     </div>
                     <div className=' py-2 px-6 flex items-center justify-between'>
                         <strong> DFIS-104 </strong>
                         <p >environmental Safety Management</p>
-                        <span>{userData?.subjects && userData.subjects.length>3?userData.subjects[3].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>3?fullDetail.subjects[3].value:"Marks not available"}</span>
                     </div>
                     <div className=' py-2 px-6 flex items-center justify-between'>
                         <strong> DFIS-105 </strong>
                         <p >Deasaster Management</p>
-                        <span>{userData?.subjects && userData.subjects.length>4?userData.subjects[4].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>4?fullDetail.subjects[4].value:"Marks not available"}</span>
                     </div>
                     <div className=' py-2 px-6 flex items-center justify-between'>
                         <strong> DFIS-106 </strong>
                         <p >Industrial Safety Legistature</p>
-                        <span>{userData?.subjects && userData.subjects.length>5?userData.subjects[5].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>5?fullDetail.subjects[5].value:"Marks not available"}</span>
                     </div>
                     <div className=' py-2 px-6 flex items-center justify-between'>
                         <strong> DFIS-107 </strong>
                         <p >Electrical Safety Management</p>
-                        <span>{userData?.subjects && userData.subjects.length>6?userData.subjects[6].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>6?fullDetail.subjects[6].value:"Marks not available"}</span>
                     </div>
                     <div className=' py-2 px-6  flex items-center justify-between '>
                         <strong> DFIS-108 </strong>
                         <p >Industrial Hygiene & occupationa Health</p>
-                        <span>{userData?.subjects && userData.subjects.length>7?userData.subjects[7].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>7?fullDetail.subjects[7].value:"Marks not available"}</span>
                     </div>
                     <div className=' py-2  px-6 flex items-center justify-between'>
                         <strong> DFIS-109 </strong>
                         <p>Chemical And process safety Management</p>
-                        <span>{userData?.subjects && userData.subjects.length>8?userData.subjects[8].value:"Marks not available"}</span>
+                        <span>{fullDetail?.subjects && fullDetail.subjects.length>8?fullDetail.subjects[8].value:"Marks not available"}</span>
                     </div>
                     
                     

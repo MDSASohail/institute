@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {Route,Routes,Link} from 'react-router-dom'
 import AddUser from './AddUser';
 import axios from 'axios';
 import SingleStudentDetail from './SingleStudentDetail';
+import { allData } from '../App';
 function AllStudents() {
 
     
     const [show,setShow]=useState(false);
-    const [stu,setStu]=useState([])
-    const [value,setValue]=useState("");
+    
+    
     const [filterUser,setFilterUser]=useState([]);
     const [singleUser,setSingleUser]=useState("");
      const [catagory,setCategory]=useState("fullName")
-  
+     const {dispatch,allStudents,singleSelectedStudent}=useContext(allData);
     const fetchData=async ()=>{
       try {
        const data=await axios.get('http://localhost:8000/user/');
        const d=data.data;
-       setStu(d);
+       dispatch({type:"AllStudents",payload:d})
+       
        setFilterUser(d);
       //  console.log("All student is ",stu);
       //  console.log("Data is ",d)
@@ -38,15 +40,15 @@ function AllStudents() {
        
        if(e.target.value=="")
        {
-         setFilterUser(stu);
+         setFilterUser(allStudents);
          return;
        }
        const inputValue=e.target.value.toLowerCase();
        
        if(catagory=="fullName")
-       {const filterUser=stu.filter((s)=>s.fullName.toLowerCase().includes(inputValue));setFilterUser(filterUser);}
+       {const filterUser=allStudents.filter((s)=>s.fullName.toLowerCase().includes(inputValue));setFilterUser(filterUser);}
       else
-      {const filterUser=stu.filter((s)=>s.registrationNo.toLowerCase().includes(inputValue));setFilterUser(filterUser);}
+      {const filterUser=allStudents.filter((s)=>s.registrationNo.toLowerCase().includes(inputValue));setFilterUser(filterUser);}
        
           
    }
@@ -77,7 +79,7 @@ function AllStudents() {
                      return(
                         <>
                           <Link key={student._id} to={`/admin/${student._id}`}>
-                            <li onClick={()=>{setSingleUser(student);setShow(!show);}} className={singleUser._id===student._id?'rounded-xl p-2  mr-2 my-2 bg-red-800 eachStudent cursor-pointer list-none  ':'p-2 rounded-xl mt-1 eachStudent  bg cursor-pointer list-none  mr-2 my-2'}>{student.fullName}</li>
+                            <li onClick={()=>{setSingleUser(student);setShow(!show);dispatch({type:"SingleStudent",payload:student})}} className={singleSelectedStudent._id===student._id?'rounded-xl p-2  mr-2 my-2 bg-red-800 eachStudent cursor-pointer list-none  ':'p-2 rounded-xl mt-1 eachStudent  bg cursor-pointer list-none  mr-2 my-2'}>{student.fullName}</li>
                           </Link>
                         </>
                      )
@@ -85,11 +87,11 @@ function AllStudents() {
                </div>
          </div>
          <div className="specificUserDetail ">
-             {/* {singleUser ==""?"Select a user to see detail":<div>Selected user is {singleUser}</div>} */}
+             
              <Routes>
                <Route path='/' element={<div>Select a user </div>}/>
-                <Route path='/addUser/' element={<AddUser fetchData={fetchData} which={true} userId={singleUser._id}/>}/>
-                <Route path='/:id/*' element={<SingleStudentDetail id={singleUser._id} fetchData={fetchData} registrationNo={singleUser.registrationNo} fullName={singleUser.fullName}/>}/>
+                <Route path='/addUser/' element={<AddUser fetchData={fetchData} which={true} />}/>
+                <Route path='/:id/*' element={<SingleStudentDetail fetchData={fetchData}/>}/>
                 
              </Routes>
 
