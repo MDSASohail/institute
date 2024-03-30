@@ -1,12 +1,16 @@
 import  Axios  from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import  {Link, useNavigate} from 'react-router-dom'
+import { allData } from '../App';
 function LoginPage() {
 
     const [username,setUsername]=useState(null);
     const [password,setPassword]=useState(null);
     const [error,setError]=useState("");
+    
      const navigate=useNavigate();
+      const {setUser}=useContext(allData);
+     
     const clickHangle=async()=>{
           console.log("Fetching Admin")
         //   const user= await Axios.post('http://localhost:8000/admin/get',{username:username,password:password});
@@ -14,15 +18,20 @@ function LoginPage() {
                 const user= await Axios.post('http://localhost:8000/admin/get',{username:username,password:password});
                 if(user.data.status==false)
                 {
+                     console.log("False")
                       setError(user.data.payload);
                       return;
                 }
-                sessionStorage.setItem("adminLogin",user);
+                sessionStorage.setItem("adminLogin",JSON.stringify(user.data.data));
+                setUser(user.data.data);
                 navigate('/admin/')
+                
                 console.log("Login success ",user.data)
             } catch (error) {
                 console.log(error.data);
             }
+
+        // navigate('/user/M01');
     }
   return (
     <>

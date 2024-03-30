@@ -10,7 +10,8 @@ function SingleStudentDetail({fetchData}) {
     // console.log("In single user Id is ",id);
     const[yes,setYes]=useState(false)
     const navigate=useNavigate();
-
+    const {loginUser}=useContext(allData);
+    const [errorDelete,setErrorDelete]=useState(false);
     const [userData,setUserData]=useState(null);
      const {dispatch,singleSelectedStudent}=useContext(allData);
   useEffect(()=>{
@@ -34,13 +35,18 @@ function SingleStudentDetail({fetchData}) {
     {
          try {
             const data=await axios.delete('http://localhost:8000/user/delete',{
-                data: { id: singleSelectedStudent._id }
+                data: { id: singleSelectedStudent._id ,loginUser:loginUser}
             });
-            console.log(data.data);
+            console.log("Deleted data is ",data.data);
+            if(!data.data.result)
+            {
+                      setErrorDelete(data.data.payload);
+                      return;
+            }
             fetchData();
             navigate('/admin');
          } catch (error) {
-            console.log(error.message);
+            console.log("Error in deleting user",error.message);
          }
     }
   return (
@@ -52,6 +58,15 @@ function SingleStudentDetail({fetchData}) {
               <button className='btn p-2 m-2' onClick={handleclick}>Yes</button>
                 <button className='btn p-2 m-2' onClick={()=>{setYes(false);console.log("False ",yes)}}>No</button>
               </div>
+             </div>
+         </div>}
+         {errorDelete && <div className=' yesNo absolute  flex justify-center items-center   '>
+             <div className='w-80 text-white rounded-xl flex-col h-80 flex justify-center items-center'>
+             <p>Warning</p>
+              <div>
+                {errorDelete}
+              </div>
+              <button className='btn p-2 m-2' onClick={()=>{setErrorDelete(false);setYes(false)}}>Ok</button>
              </div>
          </div>}
          <div className='h-14 - sticky top-12  flex justify-end  bg-red-800'>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { allData } from '../App';
 function AddUser({fetchData,data,which}) {
     console.log("In add user ",data);
     let w=which;
@@ -22,8 +23,9 @@ function AddUser({fetchData,data,which}) {
     const [motherName,setMotherName]=useState(data?data.userData.motherName:"");
     const [duration,setDurationDate]=useState([]);
     const [success,setSuccess]=useState(false);
+    const [error,setError]=useState(null);
     console.log("Data got from parent is ",data)
-
+     const {loginUser}=useContext(allData);
     if(data?.userData==="")
     {
         
@@ -42,11 +44,18 @@ function AddUser({fetchData,data,which}) {
         
            
         try {
-                  const data=await axios.post('http://localhost:8000/user/post',{registrationNo:registrationNo,fullName:name});
+                  const data=await axios.post('http://localhost:8000/user/post',{registrationNo:registrationNo,fullName:name,loginUser:loginUser});
                   const d=data.data;
 
                   console.log("User added ",d)
-                  setAddedUser(d);
+                  if(!d.result)
+                  {
+                       console.log("Cause of failure",d.payload);
+                       setError(d.payload);
+                       return;
+                       
+                  }
+                  setAddedUser(d.payload);
                   setFullDetail(true);
                   fetchData();
                   setFullname("");
@@ -87,8 +96,8 @@ function AddUser({fetchData,data,which}) {
                   console.log("UserDetail added ",datauploded.data);
                 setFullDetail(false);
                 setSuccess(true);
-                // if(fetchData!=undefined)
-                // fetchData();
+                
+                
                   
              } catch (error) {
                  console.log("Error in saving the details");
@@ -99,6 +108,16 @@ function AddUser({fetchData,data,which}) {
         {success && <div className='absolute  flex justify-center items-center fullView'>
              <div>{data?"Updated":"User Added"} Successfully</div>
         </div>}
+
+        {error && <div className=' yesNo absolute  flex justify-center items-center   '>
+             <div className='w-80 text-white rounded-xl flex-col h-80 flex justify-center items-center'>
+             <p>Warning</p>
+              <div>
+                {error}
+              </div>
+              <button className='btn p-2 m-2' onClick={()=>{setError(false)}}>Ok</button>
+             </div>
+         </div>}
         <div className='flex flex-wrap justify-center'>
              <div className='borderStyle   m-2'>
              <strong>Registration No</strong>
@@ -144,6 +163,7 @@ function AddUser({fetchData,data,which}) {
 
                      </strong>
                      <select className='text-xl p-2 rounded-md outline-none' name="" id="" required onChange={(e)=>{setGrate(e.target.value)}}>
+                     <option value="A">Select</option>
                          <option value="A">A</option>
                          <option value="B">B</option>
                          <option value="C">C</option>
@@ -153,6 +173,7 @@ function AddUser({fetchData,data,which}) {
                  <div className=' py-2 px-6 flex items-center justify-between'>
                      <strong>Center</strong>
                      <select name="" className='text-xl p-2 rounded-md outline-none' id="" required onChange={(e)=>{setCenter(e.target.value)}}>
+                         <option value="A">Select</option>
                          <option value="Siwan">Siwan</option>
                          <option value="Mairwa">Mairwa</option>
                          <option value="Delhi">Delhi</option>
