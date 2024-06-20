@@ -17,7 +17,7 @@ function SingleStudentDetail({fetchData}) {
   useEffect(()=>{
                   const getData=async()=>{
                     try {
-                         const data=await axios.get(`http://localhost:8000/userDetail/${singleSelectedStudent._id}`);
+                         const data=await axios.get(`https://institutenode.vercel.app/userDetail/${singleSelectedStudent._id}`);
                          const d=data.data;
                          dispatch({type:"FullDetail",payload:d});
                         //  console.log("user data got from server is ",data.data);
@@ -34,7 +34,7 @@ function SingleStudentDetail({fetchData}) {
    async function handleclick()
     {
          try {
-            const data=await axios.delete('http://localhost:8000/user/delete',{
+            const data=await axios.delete('https://institutenode.vercel.app/user/delete',{
                 data: { id: singleSelectedStudent._id ,loginUser:loginUser}
             });
             console.log("Deleted data is ",data.data);

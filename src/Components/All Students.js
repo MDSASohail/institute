@@ -16,7 +16,7 @@ function AllStudents() {
      const {dispatch,allStudents,singleSelectedStudent}=useContext(allData);
     const fetchData=async ()=>{
       try {
-       const data=await axios.get('http://localhost:8000/user/');
+       const data=await axios.get('https://institutenode.vercel.app/user/');
        const d=data.data;
        dispatch({type:"AllStudents",payload:d})
        

@@ -22,11 +22,11 @@ function UserCertificate() {
   useState(()=>{
       const fetchData=async()=>{
             try {
-                   const user=await axios.get(`http://localhost:8000/user/${id.id}`)
+                   const user=await axios.get(`https://institutenode.vercel.app/user/${id.id}`)
                    const d=user.data;
                    
                     // console.log("User account is ",d,d._id)
-                   const userDetail=await axios.get(`http://localhost:8000/userDetail/${d[0]._id}`);
+                   const userDetail=await axios.get(`https://institutenode.vercel.app/userDetail/${d[0]._id}`);
                     // console.log("User detail is ",userDetail.data);
                     setFullsetail(userDetail.data)
                     setSingleStudent(d[0]);

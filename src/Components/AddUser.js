@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { allData } from '../App';
 function AddUser({fetchData,data,which}) {
-    console.log("In add user ",data);
     let w=which;
     
     const [name,setFullname]=useState(data?data.fullName:"");
@@ -44,7 +43,7 @@ function AddUser({fetchData,data,which}) {
         
            
         try {
-                  const data=await axios.post('http://localhost:8000/user/post',{registrationNo:registrationNo,fullName:name,loginUser:loginUser});
+                  const data=await axios.post('https://institutenode.vercel.app/user/post',{registrationNo:registrationNo,fullName:name,loginUser:loginUser});
                   const d=data.data;
 
                   console.log("User added ",d)
@@ -92,7 +91,7 @@ function AddUser({fetchData,data,which}) {
            const finalData={duration:duration,center:center,userId:addedUser._id,form:data,fatherName:fatherName,motherName:motherName,percentage:percentage,totalMarks:totalMarks,degree:degree,issueDate:issueDate,grade:grade,rollNo:rollNo}
              console.log("Final data for update or adddetail",finalData)
            try {
-                const datauploded=w ? await axios.post('http://localhost:8000/userDetail/',finalData):await axios.put('http://localhost:8000/userDetail/',finalData);
+                const datauploded=w ? await axios.post('https://institutenode.vercel.app/userDetail/',finalData):await axios.put('http://localhost:8000/userDetail/',finalData);
                   console.log("UserDetail added ",datauploded.data);
                 setFullDetail(false);
                 setSuccess(true);

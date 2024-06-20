@@ -15,7 +15,7 @@ function LoginPage() {
           console.log("Fetching Admin")
         //   const user= await Axios.post('http://localhost:8000/admin/get',{username:username,password:password});
             try {
-                const user= await Axios.post('http://localhost:8000/admin/get',{username:username,password:password});
+                const user= await Axios.post('https://institutenode.vercel.app/admin/get',{username:username,password:password});
                 if(user.data.status==false)
                 {
                      console.log("False")

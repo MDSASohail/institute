@@ -40,7 +40,7 @@ function Marksheet({}) {
 
 
            <div>
-            <div className=' mt-4 text-center text-xl p-2 bg-red-800 text-white'>Student fullDetail Detail</div>
+            <div className=' mt-4 text-center text-xl p-2 bg-red-800 text-white'>Student full Detail</div>
 
             <div className=' '>
                  <div className='gridStyle'>

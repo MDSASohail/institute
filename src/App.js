@@ -10,6 +10,7 @@ import Reducer from "./ContextApi/Reducer";
 import UserCertifaca from './Components/UserCertificate'
 import LoginPage from "./Components/LoginPage";
 import Home from "./Components/Home";
+import Todo from "./Components/Todo";
 export const allData=createContext();
 function App() {
   const initialData={allStudents:"",singleSelectedStudent:"",fullDetail:""};
@@ -26,13 +27,14 @@ function App() {
       <allData.Provider value={{allStudents:value.allStudents,singleSelectedStudent:value.singleSelectedStudent,fullDetail:value.fullDetail,dispatch:dispatch,setUser:setUser,loginUser:user}}>
        
          <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<LoginPage/>}/>
           <Route path="/admin/*" element={user?<AdminHomePage/>:<Navigate to={'/login'}/>}/>
           <Route path="/user/:id" element={<UserCertifaca/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
          </Routes>
          
          </allData.Provider>
+
+        
       
         
     
