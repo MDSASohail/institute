@@ -36,6 +36,10 @@ function LoginPage() {
   return (
     <>
         <div className=' flex items-center justify-center  flex-col specificBgg'>
+            <div className='absolute top-2 right-2'>
+            <p><strong>Username :</strong> Sohail</p>
+            <p><strong>Password :</strong> Khan</p>
+            </div>
             <h1 className='heading '><strong>Admin Login</strong></h1>
             <form >
             
