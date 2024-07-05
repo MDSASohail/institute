@@ -24,7 +24,7 @@ function Marksheet({}) {
              </div>
              
             <div className='borderStyle  m-2'>
-            <span><strong>fullDetail Name</strong></span>
+            <span><strong>full Name</strong></span>
             <span className='ml-4 text-xl  p-2 rounded-md'>{singleSelectedStudent.fullName}</span>
             
             </div>
