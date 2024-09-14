@@ -75,7 +75,7 @@ function SingleStudentDetail({fetchData}) {
             <button className='btn p-2 m-2'>Updata</button>
             </Link>
             <Link to={`marksheet`}>
-            <button className='btn p-2 m-2'>Markbuttonet</button>
+            <button className='btn p-2 m-2'>Marksheet</button>
             </Link>
              <Link to={`certificate`}>
              <button className='btn p-2 m-2'>Certificate</button>
